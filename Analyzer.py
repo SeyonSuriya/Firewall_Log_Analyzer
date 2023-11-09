@@ -42,6 +42,7 @@ def analyze_logs(log_file_path):
     src_ip_block = []
 
     with open(log_file_path, 'r') as log_file:
+        next(log_file) #skip the first line
         for line in log_file:
             log_data = parse_log_line(line)
             if log_data is not None:
@@ -70,13 +71,9 @@ def analyze_logs(log_file_path):
     for dst_ip, count in sorted(dst_ip_count.items(), key=lambda x: x[1], reverse=True)[:5]:
         print(f"{dst_ip}: {count} times")
 
-    print("\nRequest BLOCK IPs:")
+    print("\nRequest action='BLOCK' IPs:")
     for ip in src_ip_block:
         print(f"{ip}")
-
-# def generate_summary_report():
-#     print("Detailed summary report generated.")
-#     other summary functions
 
 
 if __name__ == "__main__":
