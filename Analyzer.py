@@ -1,7 +1,7 @@
 import re
 from collections import defaultdict
 
-
+# function creates a dictionary using each row of the log file
 def parse_log_line(log_line):
     # Assuming the log is in csv format
     # Fields: Date | Time | Action | Protocol | Src IP | Dst IP | Src Port | Dst Port | Size | TCP Flags | Info
@@ -27,11 +27,13 @@ def parse_log_line(log_line):
     }
 
 
+# function that prints the action blocked logs
 def detect_threats(log_data):
     if log_data['action'] == 'BLOCK':
         print(f"Potential threat detected: {log_data}")
 
 
+# function that analyzes log data and prints insights
 def analyze_logs(log_file_path):
     total_logs = 0
     block_count = 0
@@ -71,7 +73,7 @@ def analyze_logs(log_file_path):
     for dst_ip, count in sorted(dst_ip_count.items(), key=lambda x: x[1], reverse=True)[:5]:
         print(f"{dst_ip}: {count} times")
 
-    print("\nRequest action='BLOCK' IPs:")
+    print("\nAction Blocked IPs:")
     for ip in src_ip_block:
         print(f"{ip}")
 
