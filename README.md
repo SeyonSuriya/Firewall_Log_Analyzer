@@ -23,3 +23,7 @@ The insights will be printed in the Terminal.
 - The result also includes the top 5 source IPs and top 5 destination IPs based on the count they were involved in the actions
 - For the ease of identifying potential threats the IP addresses of Sources whose actions are blocked will be printed separately,<br />
 This will help to find the trends and patterns found in the logs.
+
+### Note
+* A Sample log file (sample_log.csv) has been provided with the source code.
+* This code process log files in .csv format
